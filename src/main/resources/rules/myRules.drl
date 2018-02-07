@@ -1,0 +1,280 @@
+//created on: Dec 7, 2017
+package myRules
+
+//list any import classes here.
+import java.lang.Integer;
+import com.sample.Scoring;
+
+//declare any global variables here
+
+
+
+rule "Venituri > 5000"
+    when
+        s:Scoring(venit>5000)
+    then
+        System.out.println("Persoana are un venit mai mare de 5000 RON => 25 puncte");
+        s.setScor(25);
+end
+
+rule "Venituri intre 3000 si 5000 RON"
+when
+	s:Scoring(venit>3000 && venit <=5000)
+then
+	System.out.println("Persoana are un venit cuprins intre 3000 si 5000 RON => 20 puncte");
+	s.setScor(20);
+end
+
+rule "Venituri intre 1000 si 3000 RON"
+when
+	s:Scoring(venit>1000 && venit <=3000)
+then
+	System.out.println("Persoana are un venit cuprins intre 1000 si 3000 RON => 15 puncte");
+	s.setScor(15);
+end
+
+rule "Venituri mai mici de 1000 RON"
+when
+	s:Scoring(venit<=1000 && venit>0)
+then
+	System.out.println("Persoana are un venit mai mic de 1000 RON => 10 puncte");
+	s.setScor(10);
+end
+
+rule "Domeniul de activitate: Institutii Financiare"
+when
+	s:Scoring(domeniuActivitate == DomeniuActivitate.FINANCIAR)
+then
+	System.out.println("Persoana isi desfasoara activitatea in domeniul financiar => 15 puncte");
+	s.setScor(15);
+end
+
+rule "Domeniul de activitate: Servicii si Comert"
+when
+	s:Scoring(domeniuActivitate == DomeniuActivitate.SERVICII)
+then
+	System.out.println("Persoana isi desfasoara activitatea in domeniul serviciilor => 12 puncte");
+	s.setScor(12);
+end
+
+rule "Domeniul de activitate: Industrie si constructii"
+when
+	s:Scoring(domeniuActivitate == DomeniuActivitate.INDUSTRIE)
+then
+	System.out.println("Persoana isi desfasoara activitatea in domeniul financiar => 8 puncte");
+	s.setScor(8);
+end
+
+rule "Domeniul de activitate: Agricultura"
+when
+	s:Scoring(domeniuActivitate == DomeniuActivitate.AGRICULTURA)
+then
+	System.out.println("Persoana isi desfasoara activitatea in domeniul agricol => 5 puncte");
+	s.setScor(5);
+end
+
+rule "Ocupatie actuala: conducere"
+when
+	s:Scoring(ocupatieActuala == OcupatieActuala.CONDUCERE)
+then
+	System.out.println("Persoana are functie de conducere => 10 puncte");
+	s.setScor(10);
+end
+
+rule "Ocupatie actuala: calificat cu studii superioare"
+when
+	s:Scoring(ocupatieActuala == OcupatieActuala.CALIFICAT_CU_SS)
+then
+	System.out.println("Persoana este calificata cu studii superioare => 8 puncte");
+	s.setScor(8);
+end
+
+rule "Ocupatie actuala: calificat fara studii superioare"
+when
+	s:Scoring(ocupatieActuala == OcupatieActuala.CALIFICAT_FARA_SS)
+then
+	System.out.println("Persoana este calificata fara studii superioare => 5 puncte");
+	s.setScor(5);
+end
+
+rule "Ocupatie actuala: agricultor"
+when
+	s:Scoring(ocupatieActuala == OcupatieActuala.NICIUNA)
+then
+	System.out.println("Persoana realizeaza venituri din activitatea agricola => 3 puncte");
+	s.setScor(3);
+end
+
+rule "Vechime in munca: >5 ani"
+when
+	s:Scoring(vechime>5)
+then
+	System.out.println("Persoana are o vechime in munca mai mare de 5 ani => 10 puncte");
+	s.setScor(10);
+end
+
+rule "Vechime in munca: intre 2 si 5 ani"
+when
+	s:Scoring(vechime>2 && vechime <=5)
+then
+	System.out.println("Persoana are o vechime in munca intre 2 si 5 ani => 8 puncte");
+	s.setScor(8);
+end
+
+rule "Vechime in munca: pana in 2 ani, inclusiv"
+when
+	s:Scoring(vechime <= 2 && vechime > 0)
+then
+	System.out.println("Persoana are o vechime in munca de pana in 2 ani => 5 puncte");
+	s.setScor(5);
+end
+
+
+
+rule "Varsta: intre 18 si 25"
+when
+	s:Scoring(varsta>=18 && varsta<=25)
+then
+	System.out.println("Persoana are "+s.getVarsta()+" ani. => 8 puncte");
+	s.setScor(8);
+end
+
+rule "Varsta: intre 26 si 45"
+when
+	s:Scoring(varsta>25 && varsta<=45)
+then
+	System.out.println("Persoana are "+s.getVarsta()+" ani. => 15 puncte");
+	s.setScor(15);
+end
+
+rule "Varsta: intre 46 si 60"
+when
+	s:Scoring(varsta>45 && varsta<=60)
+then
+	System.out.println("Persoana are "+s.getVarsta()+" ani. => 10 puncte");
+	s.setScor(10);
+end
+
+rule "Varsta: >60"
+when
+	s:Scoring(varsta>60)
+then
+	System.out.println("Persoana are "+s.getVarsta()+" ani. => 5 puncte");
+	s.setScor(5);
+end
+
+rule "Situatie familiala: 1"
+when
+	s:Scoring(situatieFamiliala == SituatieFamiliala.CASATORIT_MAX_2PERS)
+then
+	System.out.println("Persoana este casatorita si are cel mult 2 persoane in familie care nu realizeaza venituri => 10 puncte");
+	s.setScor(10);
+end
+
+
+rule "Situatie familiala: 2"
+when
+	s:Scoring(situatieFamiliala == SituatieFamiliala.CASATORIT_MIN_2PERS)
+then
+	System.out.println("Persoana este casatorita si are mai mult de 2 persoane in familie care nu realizeaza venituri => 5 puncte");
+	s.setScor(5);
+end
+
+
+rule "Situatie familiala: 3"
+when
+	s:Scoring(situatieFamiliala == SituatieFamiliala.NECASATORIT_MAX_2PERS)
+then
+	System.out.println("Persoana este necasatorita/divortata/vaduva si are cel mult 2 persoane in familie care nu realizeaza venituri => 8 puncte");
+	s.setScor(15);
+end
+
+
+rule "Situatie familiala: 4"
+when
+	s:Scoring(situatieFamiliala == SituatieFamiliala.NECASATORIT_MIN_2PERS)
+then
+	System.out.println("Persoana este necasatorita/divortata/vaduva si are mai mult de 2 persoane in familie care nu realizeaza venituri => 3 puncte");
+	s.setScor(3);
+end
+
+rule "Situatie locativa: proprietate"
+when
+	s:Scoring(situatieLocativa == SituatieLocativa.PROPRIETATE)
+then
+	System.out.println("Persoana detine o proprietate => 15 puncte");
+	s.setScor(15);
+end
+
+rule "Situatie locativa: parinti/rude"
+when
+	s:Scoring(situatieLocativa == SituatieLocativa.PARINTI)
+then
+	System.out.println("Persoana locuieste la parinti/copii/rude/afini => 10 puncte");
+	s.setScor(10);
+end
+
+rule "Situatie locativa: chirie"
+when
+	s:Scoring(situatieLocativa == SituatieLocativa.CHIRIE)
+then
+	System.out.println("Persoana locuieste in chirie => 8 puncte");
+	s.setScor(8);
+end
+
+rule "Situatie locativa: particular"
+when
+	s:Scoring(situatieLocativa == SituatieLocativa.PARTICULAR)
+then
+	System.out.println("Persoana locuieste in particular cu sau fara plata chiriei => 5 puncte");
+	s.setScor(5);
+end
+
+rule "Afisare scor"
+when
+	s:Scoring(venit > 0 && 
+				domeniuActivitate != null && 
+				ocupatieActuala != null && 
+				vechime > 0 && 
+				varsta > 0 && 
+				situatieFamiliala != null && 
+				situatieLocativa !=null)
+then
+	System.out.println("Scorul total al persoanei este: "+s.getScor());
+end
+
+rule "Validare scor general >30"
+when
+	s:Scoring()
+	eval(s.checkScor() == true)
+then
+	s.setValid(true);
+	System.out.println("Scorul este mai mare de 30. Se genereaza lista...");
+	System.out.println("Valid: "+s.isValid());
+end
+
+rule "Varsta < 18"
+when
+	s:Scoring(varsta<18)
+then
+	System.out.println("Persoana este minora => nu se va afisa nimic");
+	s.setValid(false);
+end
+
+rule "Varsta > 70"
+when
+	s:Scoring(varsta>70)
+then
+	System.out.println("Persoana depaseste limita maxima de varsta => nu se va afisa nimic");
+	s.setValid(false);
+end
+
+rule "Validare scor general <30"
+when
+	s:Scoring()
+	eval(s.checkScor() == false)
+then
+	s.setValid(false);
+	System.out.println("Scorul este mai mic de 30.");
+	System.out.println("Valid: "+s.isValid());
+end

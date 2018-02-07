@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:h="http://java.sun.com/jsf/html" 
+				xmlns:f="http://xmlns.jcp.org/jsf/core"
+				xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+    <h:outputStylesheet library="css" name="styles2.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+</h:head>
+
+<body class="body">
+ 	<nav class="navbar navbar-inverse navbar-fixed-top">
+ 	 	<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="#">Credit selection</a>
+    		</div>
+    	<ul class="nav navbar-nav navbar-right">
+			<li><a href="Index.xhtml?faces-redirect=true">Home</a></li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Analyzer<span class="caret"></span></a>
+        		<ul class="dropdown-menu">
+	          		<li><a href="formCreditSelection.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-stats"></span> Credit analyzer</a>
+	          		</li>
+	        	</ul>
+      		</li>
+      	 	<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Operations<span class="caret"></span></a>
+	        	<ul class="dropdown-menu">
+	          		<li><a href="formCreateCredit.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-plus"></span> New credit</a></li>
+	          		<li><a href="formAddBanca.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-plus"></span> New bank</a></li>
+	          		<li class="divider"></li>
+	         	 	<li><a href="formListBanci.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-list-alt"></span> Banks list</a></li>      
+	        	</ul>
+      		</li>
+      		<li><a href="aboutUs.xhtml?faces-redirect=true">About us</a></li>
+   	 	</ul>
+  	</div>
+</nav>
+<div class="container container-position">
+	<h2><b>Modificare</b></h2><br></br>
+	<b:form>
+		<b:growl id="growl" sticky="true"/>
+			<div class="form-group">
+				<b:inputText value="#{formBancaUpdate.idUpdate}" styleClass="form-control" disabled="true"/>
+			</div>
+			<div class="form-group">
+				<b:inputText value="#{formBancaUpdate.denumireUpdate}" placeholder="Denumire banca" required="true" requiredMessage="Introduceti denumirea" styleClass="form-control"/>
+			</div>
+			<div class="form-group">
+				<b:inputText value="#{formBancaUpdate.adresaUpdate}" placeholder="Adresa" required="true" requiredMessage="Introduceti adresa" styleClass="form-control"/>		
+			</div>
+			<div class="form-group">
+				<b:inputText value="#{formBancaUpdate.localitateUpdate}" placeholder="Localitate" required="true" requiredMessage="Introduceti localitatea" styleClass="form-control"/>
+			</div>
+			<div class="form-group">
+				<b:commandButton id="btnRenunta" iconAwesome="undo" styleClass="btn btn-warning btnWidth" value="Renunta" immediate="true" action="#{formBanca.renuntaEdit}"></b:commandButton>	
+				<b:commandButton id="btnEditBanca" iconAwesome="thumbs-up" styleClass="btn btn-primary btnWidth" value="Modifica" update="@form" action="#{formBancaUpdate.updateBanca}"></b:commandButton>
+			</div>			
+	</b:form>
+</div>
+</body>
+</html>

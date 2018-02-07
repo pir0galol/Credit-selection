@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:h="http://java.sun.com/jsf/html" 
+				xmlns:f="http://xmlns.jcp.org/jsf/core" 
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+	<h:outputStylesheet library="css" name="styles2.css"/>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</h:head>
+
+<body class="body">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+ 	 	<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="Index.xhtml?faces-redirect=true">Credit selection</a>
+    		</div>
+    	<ul class="nav navbar-nav navbar-right">
+			<li><a href="Index.xhtml?faces-redirect=true">Home</a></li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Analyzer<span class="caret"></span></a>
+        		<ul class="dropdown-menu">
+	          		<li><a href="formCreditSelection.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-stats"></span> Credit analyzer</a>
+	          		</li>
+	        	</ul>
+      		</li>
+      	 	<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Operations<span class="caret"></span></a>
+	        	<ul class="dropdown-menu">
+	          		<li><a href="formCreateCredit.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-plus"></span> New credit</a></li>
+	          		<li><a href="formAddBanca.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-plus"></span> New bank</a></li>
+	          		<li class="divider"></li>
+	         	 	<li><a href="formListBanci.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-list-alt"></span> Banks list</a></li>      
+	        	</ul>
+      		</li>
+      		<li><a href="aboutUs.xhtml?faces-redirect=true">About us</a></li>
+   	 	</ul>
+  	</div>
+</nav>
+<div class="headx">
+	<h1 style="color:white">Hello, we are <span class="label label-primary">Happy Java Friends</span></h1><br></br>
+	<h2 style="color:white">Team members:</h2>
+</div>
+	<div class="card infos">
+    <img src="https://vignette.wikia.nocookie.net/happytreefriends/images/b/b1/GigglesnewprofilepictureZ.png/revision/latest?cb=20170905103226" alt="Avatar" style="width:50%; height: 50%"/>
+    <div class="container">
+        <h4><b><span class="label label-success">Name0</span></b></h4>
+        <span class="label label-warning viewInfos">Drools</span>
+    </div>
+</div>
+<div class="card infos">
+    <img src="https://vignette.wikia.nocookie.net/happytreefriends/images/0/08/PopProfilePicImageZ.png/revision/latest?cb=20170629114140" alt="Avatar" style="width:50%; height:50%"/>
+    <div class="container">
+        <h4><b><span class="label label-primary">Name1</span></b></h4> 
+        <span class="label label-warning viewInfos">Java</span>
+    </div>
+</div>
+<div class="card infos">
+    <img src="https://vignette.wikia.nocookie.net/happytreefriends/images/1/13/CuddlesProfilePictureImageZ.png/revision/latest?cb=20170315155833" alt="Avatar" style="width:50%; height:50%"/>
+    <div class="container">
+        <h4><b><span class="label label-danger">Name2</span></b></h4> 
+        <span class="label label-warning viewInfos">Services-JPA</span> 
+    </div>
+</div>
+<div class="card infos">
+    <img src="https://vignette.wikia.nocookie.net/happytreefriends/images/3/3e/Handy_profile.png/revision/latest?cb=20170728192424" alt="Avatar" style="width:70%; height: 80%"/>
+    <div class="container">
+        <h4><b><span class="label label-success">Name3</span></b></h4>
+        <span class="label label-warning viewInfos">Interfaces</span>
+    </div>
+</div>
+</body>
+</html>

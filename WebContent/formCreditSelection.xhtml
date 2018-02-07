@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:h="http://java.sun.com/jsf/html" 
+				xmlns:f="http://xmlns.jcp.org/jsf/core"
+				xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="styles2.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</h:head>
+
+<body class="body">
+ 	<nav class="navbar navbar-inverse navbar-fixed-top">
+ 	 	<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="#">Credit selection</a>
+    		</div>
+    	<ul class="nav navbar-nav navbar-right">
+			<li><a href="Index.xhtml?faces-redirect=true">Home</a></li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Analyzer<span class="caret"></span></a>
+        		<ul class="dropdown-menu">
+	          		<li><a href="formCreditSelection.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-stats"></span> Credit analyzer</a>
+	          		</li>
+	        	</ul>
+      		</li>
+      	 	<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Operations<span class="caret"></span></a>
+	        	<ul class="dropdown-menu">
+	          		<li><a href="formCreateCredit.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-plus"></span> New credit</a></li>
+	          		<li><a href="formAddBanca.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-plus"></span> New bank</a></li>
+	          		<li class="divider"></li>
+	         	 	<li><a href="formListBanci.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-list-alt"></span> Banks list</a></li>      
+	        	</ul>
+      		</li>
+      		<li><a href="aboutUs.xhtml?faces-redirect=true">About us</a></li>
+   	 	</ul>
+  	</div>
+</nav>	
+		<h:form>
+			<b:growl sticky="true"/>
+				<div class="container container-2">
+					<h4 class="title"><b>Tip credit</b></h4>						
+							<div class="form-group">
+								<div class="pic"><h:graphicImage library="images" name="piggy-black.png" /></div>
+								<div class="pic"><h:graphicImage library="images" name="home-black.png" /></div>		
+								<div class="pic"><h:graphicImage library="images" name="car-black.png" /></div>					
+								<h:selectOneRadio value="#{formCreditSelection.scoring.tipCredit}" valueChangeListener="#{formCreditSelection.currentCredit}" required="true" requiredMessage="Alegeti tipul de credit" styleClass="rbns">
+									<f:selectItems value="#{formCreditSelection.listaCredite}" var="tipCredit" itemValue="#{tipCredit}" itemLabel="#{tipCredit.label}" styleClass="form-control"/>							
+								</h:selectOneRadio>						 
+							</div>
+				</div>		
+				<br></br>				
+				<div class="container container-2">
+					<h4 class="title"><b>Detalii credit</b></h4>
+							<div class="form-group">
+								<div class="pic pic-pos"><h:graphicImage library="images" name="funds.png" /></div>
+								<div class="pic pic-pos"><h:graphicImage library="images" name="calendar.png" /></div>		
+								<div class="pic pic-pos"><h:graphicImage library="images" name="coins.png" /></div>
+									<div class="form-group">
+										<b:inputText value="#{formCreditSelection.scoring.valoareCredit}" placeholder="Suma dorita" required="true" maxlength="6" requiredMessage="Introduceti suma dorita" styleClass="form-control pic input"/>
+									</div>
+									<div class="form-group">
+										<b:inputText value="#{formCreditSelection.scoring.perioadaCredit}" placeholder="Perioada (ani)" required="true" maxlength="2" requiredMessage="Introduceti perioada" styleClass="form-control pic input"/>
+									</div>
+									<div class="form-group">
+										<h:selectOneMenu value="#{formCreditSelection.scoring.monedaCredit}" valueChangeListener="#{formCreditSelection.currentMoneda}" required="true" requiredMessage="Alegeti moneda" styleClass="form-control pic input">
+											<f:selectItems value="#{formCreditSelection.listaMonede}" var="moneda" itemValue="#{moneda}"/>
+										</h:selectOneMenu>
+									</div>
+							</div>
+				</div>		
+				<br></br>		
+				<div class="container container-2">
+					<h4 class="title"><b>Date suplimentare</b></h4>
+						<div class="form-group">
+							<label class="control-label"><b>Ocupatia actuala:</b></label>
+								<h:selectOneMenu value="#{formCreditSelection.scoring.ocupatieActuala}" valueChangeListener="#{formCreditSelection.currentOcupatie}" required="true" requiredMessage="Ce ocupatie aveti?" styleClass="form-control">
+									<f:selectItems value="#{formCreditSelection.listaOcupatii}" var="ocupatie" itemValue="#{ocupatie}" itemLabel="#{ocupatie.label}" styleClass="form-control"/>
+								</h:selectOneMenu>
+						</div>	
+						<div class="form-group">
+							<label class="control-label"><b>Domeniu activitate:</b></label>
+								<h:selectOneMenu value="#{formCreditSelection.scoring.domeniuActivitate}" valueChangeListener="#{formCreditSelection.currentDomeniu}" required="true" requiredMessage="In ce domeniu activati?" styleClass="form-control">
+									<f:selectItems value="#{formCreditSelection.listaDomenii}" var="domeniu" itemValue="#{domeniu}" itemLabel="#{domeniu.label}" styleClass="form-control"/>
+								</h:selectOneMenu>
+						</div>																													
+						<div class="form-group">
+							<label class="control-label"><b>Situatie familiala:</b></label>
+								<h:selectOneMenu value="#{formCreditSelection.scoring.situatieFamiliala}" valueChangeListener="#{formCreditSelection.currentSituatieFam}" required="true" requiredMessage="Ce situatie familiala aveti?" styleClass="form-control">
+									<f:selectItems value="#{formCreditSelection.listaSituatiiFam}" var="sitfam" itemValue="#{sitfam}" itemLabel="#{sitfam.label}" styleClass="form-control"/>
+								</h:selectOneMenu>
+						</div>										
+						<div class="form-group">
+							<label class="control-label"><b>Situatie locativa:</b></label>
+								<h:selectOneMenu value="#{formCreditSelection.scoring.situatieLocativa}" valueChangeListener="#{formCreditSelection.currentSituatieLoc}" required="true" requiredMessage="Ce situatie locativa aveti?" styleClass="form-control">
+									<f:selectItems value="#{formCreditSelection.listaSituatiiLoc}" var="sitloc" itemValue="#{sitloc}" itemLabel="#{sitloc.label}" styleClass="form-control"/>
+								</h:selectOneMenu>
+						</div>
+						<div class="form-group">
+							<b:inputText value="#{formCreditSelection.scoring.venit}" placeholder="Venit (RON)" required="true" maxlength="5" requiredMessage="Introduceti venitul dumneavoastra" styleClass="form-control"/>				
+						</div>
+						<div class="form-group">
+							<b:inputText value="#{formCreditSelection.scoring.vechime}" placeholder="Vechime in munca (ani)" maxlength="2" required="true" requiredMessage="Introduceti vechimea dumneavoastra in campul muncii" styleClass="form-control"/>
+						</div>						
+						<div class="form-group">
+							<b:inputText value="#{formCreditSelection.scoring.varsta}" placeholder="Varsta" maxlength="2" required="true" requiredMessage="Introduceti varsta dumneavoastra" styleClass="form-control"/>
+						</div>
+						<div class="form-group">
+							<b:commandButton id="btnRenunta" iconAwesome="undo" value="Renunta" action="#{formCreditSelection.renunta}" immediate="true" look="warning" styleClass="btn btn-warning btnWidth"></b:commandButton>														
+							<b:commandButton id="btnShow" iconAwesome="search" value="Cauta" action="#{formCreditSelection.show}" update="@form" look="primary" styleClass="btn btn-info btnWidth"></b:commandButton>			
+						</div>																				
+				</div>
+		</h:form>
+	</body>	
+</html>									

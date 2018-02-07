@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+	  xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:h="http://java.sun.com/jsf/html" 
+	  xmlns:f="http://xmlns.jcp.org/jsf/core" 
+	  xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="styles2.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</h:head>
+<body class="body">
+ 	<nav class="navbar navbar-inverse navbar-fixed-top">
+ 	 	<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="#">Credit selection</a>
+    		</div>
+    	<ul class="nav navbar-nav navbar-right">
+			<li><a href="Index.xhtml?faces-redirect=true">Home</a></li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Analyzer<span class="caret"></span></a>
+        		<ul class="dropdown-menu">
+	          		<li><a href="formCreditSelection.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-stats"></span> Credit analyzer</a>
+	          		</li>
+	        	</ul>
+      		</li>
+      	 	<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Operations<span class="caret"></span></a>
+	        	<ul class="dropdown-menu">
+	          		<li><a href="formCreateCredit.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-plus"></span> New credit</a></li>
+	          		<li><a href="formAddBanca.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-plus"></span> New bank</a></li>
+	          		<li class="divider"></li>
+	         	 	<li><a href="formListBanci.xhtml?faces-redirect=true"><span class="glyphicon glyphicon-list-alt"></span> Banks list</a></li>      
+	        	</ul>
+      		</li>
+      		<li><a href="aboutUs.xhtml?faces-redirect=true">About us</a></li>
+   	 	</ul>
+  	</div>
+</nav>
+	<div class="container container-position-list">
+		<h:form>
+			<h2><b>Rezultate</b></h2><br></br>
+<!-- 				<h5><b>Suma solicitata:</b><span class="label label-info"><h:outputText value="#{flash.sumaSolicitata} #{flash.moneda}"></h:outputText></span></h5> -->
+<!-- 				<h5><b>Perioada (ani):</b><span class="label label-info"><h:outputText value="#{flash.perioadaSolicitata}"></h:outputText></span></h5><br></br> -->
+				<b:dataTable value="#{flash.finalList}" 
+							 var="entry" 
+							 page-length="10" 
+							 csv="true" 
+							 excel="true" 
+							 pdf="true"
+							 searching="false"
+							 row-highlight="false"
+							 striped="false"
+							 styleClass="colored">
+					<b:dataTableColumn value="#{entry.value.denumire}" label="Denumire banca" orderable="false"/>
+					<b:dataTableColumn value="#{entry.key.denumireCredit}" label="Denumire credit" orderable="false"/>
+					<b:dataTableColumn value="#{entry.key.DAE}" label="DAE" orderable="false" order="asc" />
+					<b:dataTableColumn value="#{entry.key.primaRata}" label="Prima rata" orderable="false"/>
+					<b:dataTableColumn value="#{entry.key.totalPlata}" label="Cost total" orderable="false"/>
+					<b:dataTableColumn label=" "><b:navLink href="#" value="Solicita acum" icon="globe" iconAlign="right"/></b:dataTableColumn>
+				</b:dataTable>
+				<b:commandButton value="Inapoi" iconAwesome="undo" action="#{formCreditSelection.returnToSelection}" immediate="true" styleClass="btn btn-warning btnWidth"></b:commandButton>
+		</h:form>
+	</div>		
+</body>
+</html>
